@@ -1,12 +1,15 @@
-const sendFile = async (body: any): Promise<any> => {
+const sendFile = async (body: File): Promise<any> => {
+  let data = new FormData();
+  data.append('file', body);
+
   const requestOptions = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
+    headers: { 'Content-Type': 'multipart/form-data' },
+    body: data,
   };
 
   const response = await fetch(`${process.env.API_URL}/api/transactions`, requestOptions);
-  return response.json();
+  return response;
 };
 
 export const TransactionsService = {

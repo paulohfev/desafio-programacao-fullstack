@@ -1,8 +1,11 @@
 import React, { useRef, useState } from 'react';
+import { useAppDispatch } from '../../hooks/store';
+import { sendTransactionsFile } from '../../reducers/transactions/transactions.action';
 import './Form.css';
 
 const Form: React.FC = () => {
   const [attachedFile, setAttachedFile] = useState<File | undefined>(undefined);
+  const dispatch = useAppDispatch();
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,8 +16,15 @@ const Form: React.FC = () => {
     return <div className="attached-file">{attachedFile?.name}</div>;
   };
 
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event?.preventDefault();
+    if (attachedFile) {
+      dispatch(sendTransactionsFile(attachedFile));
+    }
+  }
+
   return (
-    <form className="form">
+    <form className="form" onSubmit={onSubmit}>
       <legend className="form-legend">Upload your file</legend>
       <fieldset className="fieldset">
         <input
