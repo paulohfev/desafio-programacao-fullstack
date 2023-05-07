@@ -1,8 +1,7 @@
 import express, { Express, Request, Response } from 'express';
-
-const dotenv = require('dotenv');
-const bodyParser = require('body-parser');
-const sequelize = require('./database.config');
+import sequelize from './config/database.config';
+import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
 
 dotenv.config();
 
