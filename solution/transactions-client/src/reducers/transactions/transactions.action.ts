@@ -4,5 +4,5 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const sendTransactionsFile = createAsyncThunk(
   'transactions/sendFile',
-  async (body: File) => await TransactionsService.sendFile(body)
+  async (file: File) => await TransactionsService.sendFile(file)
 );

@@ -4,9 +4,8 @@ import sequelize from '../config/database.config';
 const Transaction = sequelize.define('transaction', {
   id: {
     type: Sequelize.UUID,
-    autoIncrement: true,
-    allowNull: false,
     primaryKey: true,
+    defaultValue: Sequelize.UUIDV4,
   },
   type: {
     type: Sequelize.INTEGER,

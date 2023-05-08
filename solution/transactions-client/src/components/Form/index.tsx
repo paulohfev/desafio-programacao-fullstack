@@ -9,7 +9,9 @@ const Form: React.FC = () => {
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAttachedFile(e.target.files?.[0]);
+    if (e.target.files) {
+      setAttachedFile(e.target.files[0]);
+    }
   };
 
   const renderAttachedFilePreview = () => {
