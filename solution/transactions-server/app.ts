@@ -1,4 +1,5 @@
 import express, { Express, Request, Response } from 'express';
+import cors from 'cors';
 import sequelize from './config/database.config';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
@@ -11,6 +12,7 @@ const port = process.env.PORT || 4000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(cors());
 app.use('/api', transactionsRoutes);
 
 app.get('/', (req: Request, res: Response) => {

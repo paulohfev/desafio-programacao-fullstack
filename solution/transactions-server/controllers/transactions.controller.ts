@@ -1,13 +1,12 @@
 import { NextFunction, Request, Response } from 'express';
 import fs from 'fs';
 import readline from 'readline';
-import { Transaction as TransactionInterface } from '../interfaces/transaction.interface';
 import Transaction from '../models/transaction.model';
 
 const createTransactions = (req: Request, res: Response, next: NextFunction) => {
-  if (req.file) {
-    const newTransactions: any[] = [];
+  const newTransactions: any[] = [];
 
+  if (req.file) {
     const rl = readline.createInterface({
       input: fs.createReadStream(req.file.path,'utf8'),
       crlfDelay: Infinity,
@@ -23,9 +22,17 @@ const createTransactions = (req: Request, res: Response, next: NextFunction) => 
       })
     });
 
-    rl.on('close', () => {
-      Transaction.bulkCreate(newTransactions)
-    })
+    rl.on('close', async () => {
+      await Transaction.bulkCreate(newTransactions)
+        .then(() => {
+          res.statusMessage = "Transactions were correctly uploaded";
+          return res.status(200).send();
+        })
+        .catch((err) => {
+          res.statusMessage = `There was an issue with your upload. Please try again later.\n${err}`
+          return res.status(400).send();
+        })
+    });
   }
 }
 
