@@ -4,6 +4,7 @@ import sequelize from './config/database.config';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import transactionsRoutes from './routes/transactions.routes';
+import balanceRoutes from './routes/balence.routes';
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
 app.use('/api', transactionsRoutes);
+app.use('/api', balanceRoutes);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('hello there');
