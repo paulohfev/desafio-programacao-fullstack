@@ -1,0 +1,19 @@
+.table {
+  border-collapse: collapse;
+  height: 500px;
+  margin: 40px auto 0;
+  overflow: auto;
+}
+
+.table td, .table .table-header {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table-header {
+  background-color: rgb(73, 71, 71);
+  color: white;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+}
