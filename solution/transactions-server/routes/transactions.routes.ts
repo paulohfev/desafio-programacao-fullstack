@@ -6,6 +6,8 @@ const router = express.Router();
 
 const upload = multer({ dest: 'uploads/' });
 
+router.get('/transactions', TransactionsController.getTransactions);
+
 router.post('/transactions', upload.single('transactions'), TransactionsController.createTransactions);
 
 export default router;

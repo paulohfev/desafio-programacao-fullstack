@@ -3,6 +3,17 @@ import fs from 'fs';
 import readline from 'readline';
 import Transaction from '../models/transaction.model';
 
+const getTransactions = (req: Request, res: Response, next: NextFunction) => {
+  Transaction.findAll()
+    .then(transactions => {
+      return res.status(200).send(transactions);
+    })
+    .catch(err => {
+      res.statusMessage = `Not found.\n${err}`
+      return res.status(400).send();
+    })
+}
+
 const createTransactions = (req: Request, res: Response, next: NextFunction) => {
   const newTransactions: any[] = [];
 
@@ -38,4 +49,5 @@ const createTransactions = (req: Request, res: Response, next: NextFunction) => 
 
 export const TransactionsController = {
   createTransactions,
+  getTransactions
 }
