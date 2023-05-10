@@ -1,6 +1,7 @@
 import { Transaction } from "../../interfaces/Transaction.interface";
+import { GenericResponse } from "../../interfaces/genericResponse.interface";
 
-const sendFile = async (file: File): Promise<void> => {
+const sendFile = async (file: File): Promise<GenericResponse> => {
   let formData = new FormData();
   formData.append('transactions', file);
 
@@ -9,9 +10,13 @@ const sendFile = async (file: File): Promise<void> => {
     body: formData,
   };
 
-  await fetch(`${process.env.REACT_APP_API_URL}/transactions`, requestOptions)
-    .then(async res => await res.json())
-    .catch(async err => await err.json());
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/transactions`, requestOptions);
+    return response.json();
+  } catch (err: any) {
+    console.error(err);
+    return err.json();
+  }
 };
 
 const getTransactions = async (): Promise<Transaction[]> => {

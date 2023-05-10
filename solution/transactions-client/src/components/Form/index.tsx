@@ -3,14 +3,17 @@ import { useAppDispatch } from '../../hooks/store';
 import { getTransactions, sendTransactionsFile } from '../../reducers/transactions/transactions.action';
 import { getBalance } from '../../reducers/balance/balance.action';
 import './Form.css';
-import { useSelector } from 'react-redux';
-import { selectUploadResponse } from '../../reducers/transactions/transactions.selectors';
+import { GenericResponse } from '../../interfaces/genericResponse.interface';
 
-const Form: React.FC = () => {
+type Props = {
+  setShowToast: (T: boolean) => void;
+  setToastMessage: (T: GenericResponse) => void;
+}
+
+const Form: React.FC<Props> = ({ setShowToast, setToastMessage }) => {
   const [attachedFile, setAttachedFile] = useState<File | undefined>(undefined);
   const dispatch = useAppDispatch();
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
-  const uploadResonse = useSelector(selectUploadResponse);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -25,12 +28,13 @@ const Form: React.FC = () => {
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
     if (attachedFile) {
-      dispatch(sendTransactionsFile(attachedFile))
-        .then((res) => {
-          console.log(uploadResonse)
+      await dispatch(sendTransactionsFile(attachedFile))
+        .then((response) => {
           dispatch(getBalance());
           dispatch(getTransactions());
           setAttachedFile(undefined);
+          setShowToast(true);
+          setToastMessage(response.payload as GenericResponse)
       });
     }
   }

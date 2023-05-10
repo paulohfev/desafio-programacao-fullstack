@@ -18,5 +18,6 @@ code {
 
 .App {
   padding: 20px;
+  position: relative;
   text-align: center;
 }
