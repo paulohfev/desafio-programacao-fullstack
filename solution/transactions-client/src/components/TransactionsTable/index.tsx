@@ -12,10 +12,8 @@ const TransactionsTable: React.FC = () => {
 
   useEffect(() => {
     dispatch(getTransactions());
-  }, []);
-
+  }, [dispatch]);
   const transactions = useSelector(selectTransactions);
-  console.log('from component', transactions)
 
   const renderTransactionsList = () => {
     return transactions.map((transaction: Transaction) => {
