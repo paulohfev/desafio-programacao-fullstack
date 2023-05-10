@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  app:
+    container_name: transactions-client-server
+    image: transactions-client-server
+    build:
+      context: .
+      target: development
+      args:
+       - DB_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - .:/app/
+    stdin_open: true
+    ports:
+      - 4000:4000
