@@ -8,6 +8,6 @@ export const sendTransactionsFile = createAsyncThunk(
 );
 
 export const getTransactions = createAsyncThunk(
-  'transactions/sendFile',
+  'transactions/getTransactions',
   async () => await TransactionsService.getTransactions()
 );

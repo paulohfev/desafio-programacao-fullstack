@@ -10,8 +10,8 @@ const sendFile = async (file: File): Promise<void> => {
   };
 
   await fetch(`${process.env.REACT_APP_API_URL}/transactions`, requestOptions)
-    .then(res => console.log('res', res))
-    .catch(err => console.log('error', err));
+    .then(async res => await res.json())
+    .catch(async err => await err.json());
 };
 
 const getTransactions = async (): Promise<Transaction[]> => {

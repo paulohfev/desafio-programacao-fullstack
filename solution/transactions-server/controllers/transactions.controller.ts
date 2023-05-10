@@ -36,12 +36,16 @@ const createTransactions = (req: Request, res: Response, next: NextFunction) => 
     rl.on('close', async () => {
       await Transaction.bulkCreate(newTransactions)
         .then(() => {
-          res.statusMessage = "Transactions were correctly uploaded";
-          return res.status(200).send();
+          return res.status(200).send({
+            message: "Transactions were correctly uploaded",
+            success: true
+          });
         })
         .catch((err) => {
-          res.statusMessage = `There was an issue with your upload. Please try again later.\n${err}`
-          return res.status(400).send();
+          return res.status(400).send({
+            message: "There was an issue with your upload. Please try again later.\n${err}",
+            success: false,
+          });
         })
     });
   }
