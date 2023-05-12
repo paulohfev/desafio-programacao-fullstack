@@ -5,7 +5,7 @@ import TransactionsTable from '../../components/TransactionsTable';
 import ToastMessage from '../../components/ToastMessage';
 import './HomePage.css';
 
-const App: React.FC = () => {
+const HomePage: React.FC = () => {
   const [showToast, setShowToast] = useState(true);
   const [toastMessage, setToastMessage] = useState({ message: '', success: false });
 
@@ -18,7 +18,7 @@ const App: React.FC = () => {
   }, [showToast]);
 
   return (
-    <div className="App">
+    <div className="home-page-wrapper">
       <Form setShowToast={setShowToast} setToastMessage={setToastMessage} />
       <BalanceTable />
       <TransactionsTable />
@@ -30,4 +30,4 @@ const App: React.FC = () => {
   );
 }
 
-export default App;
+export default HomePage;
