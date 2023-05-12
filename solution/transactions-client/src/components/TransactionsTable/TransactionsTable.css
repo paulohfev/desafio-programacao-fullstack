@@ -10,6 +10,11 @@
   padding: 8px;
 }
 
+.table-cell.vendor-name,
+.table-cell.product-name {
+  text-transform: capitalize;
+}
+
 .table-header {
   background-color: rgb(73, 71, 71);
   color: white;

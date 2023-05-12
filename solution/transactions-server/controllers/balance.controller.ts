@@ -31,6 +31,27 @@ const getBalance = (req: Request, res: Response, next: NextFunction) => {
     });
 }
 
+const getBalanceByAffiliate = (req: Request, res: Response, next: NextFunction) => {
+  let balance = 0;
+  const affiliateName = req.params.affiliateName;
+
+  Transaction.findAll({ where: { vendor: affiliateName } })
+    .then((transactions) => {
+      transactions.forEach((transaction: any) => {
+        if (transaction.type === 4) {
+          balance += transaction.value
+        }
+
+        res.status(200).send(balance);
+      });
+    })
+    .catch((err) => {
+      res.statusMessage = "The affiliate's balance was not found."
+      return res.status(400).send(err);
+    });
+}
+
 export const BalanceController = {
   getBalance,
+  getBalanceByAffiliate,
 };

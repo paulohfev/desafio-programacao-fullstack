@@ -17,13 +17,15 @@ const TransactionsTable: React.FC = () => {
 
   const renderTransactionsList = () => {
     return transactions.map((transaction: Transaction) => {
+      const formatVendorName = (name: string) => name.replace(/[-]+/g, ' ');
+
       return (
         <tr key={`${transaction.id}-row`}>
           <td className="table-cell">{transaction.type}</td>
           <td className="table-cell">{getTimeStamp(transaction.date)}</td>
-          <td className="table-cell">{transaction.product}</td>
+          <td className="table-cell product-name">{transaction.product}</td>
           <td className="table-cell">{`${formatToCurrency(transaction.value)}`}</td>
-          <td className="table-cell">{transaction.vendor}</td>
+          <td className="table-cell vendor-name">{formatVendorName(transaction.vendor)}</td>
         </tr>
       );
     });
