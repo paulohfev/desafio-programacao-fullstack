@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../hooks/store';
-import { getBalance } from '../../reducers/balance/balance.action';
-import { selectBalance } from '../../reducers/balance/balance.selector';
+import { getBalance } from '../../store/balance/balance.action';
+import { selectBalance } from '../../store/balance/balance.selector';
 import { formatToCurrency } from '../../utils/content';
 import './BalanceTable.css';
 

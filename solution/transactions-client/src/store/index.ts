@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { balanceReducer } from '../reducers/balance/balance.reducer';
+import { balanceReducer } from './balance/balance.reducer';
 import { transactionsReducer } from '../reducers/transactions/transactions.reducer';
 
 const store = configureStore({

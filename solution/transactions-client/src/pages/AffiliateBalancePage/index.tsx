@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { formatVendorName, formatToCurrency } from '../../utils/content';
-import { BalanceService } from '../../reducers/balance/balance.service';
+import { BalanceService } from '../../store/balance/balance.service';
 import './AffiliateBalancePage.css';
 
 const AffiliateBalancePage: React.FC = () => {
