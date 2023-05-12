@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Form from './components/Form';
-import BalanceTable from './components/BalanceTable';
-import TransactionsTable from './components/TransactionsTable';
-import ToastMessage from './components/ToastMessage';
-import './index.css';
+import Form from '../../components/Form';
+import BalanceTable from '../../components/BalanceTable';
+import TransactionsTable from '../../components/TransactionsTable';
+import ToastMessage from '../../components/ToastMessage';
+import './HomePage.css';
 
 const App: React.FC = () => {
   const [showToast, setShowToast] = useState(true);

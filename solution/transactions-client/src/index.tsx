@@ -1,15 +1,15 @@
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import App from './App';
+import AffiliateBalancePage from './pages/AffiliateBalancePage';
+import HomePage from './pages/HomePage';
 import store from './store';
 import './index.css';
-import AffiliateBalancePage from './pages/AffiliateBalancePage';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <HomePage />,
   },
   {
     path: "/balance/:affiliateName",
