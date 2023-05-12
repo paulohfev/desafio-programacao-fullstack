@@ -41,9 +41,9 @@ const getBalanceByAffiliate = (req: Request, res: Response, next: NextFunction) 
         if (transaction.type === 4) {
           balance += transaction.value
         }
-
-        res.status(200).send(balance);
       });
+
+      res.status(200).send({ data: balance });
     })
     .catch((err) => {
       res.statusMessage = "The affiliate's balance was not found."

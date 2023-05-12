@@ -10,6 +10,8 @@ export const formatToCurrency = (value: number) => {
   return dollarString.format(value);
 };
 
+export const formatVendorName = (name: string) => name.replace(/[-]+/g, ' ');
+
 export const getTimeStamp = (date: Date) => {
   const attainedDate = new Date(date);
   const formattedDate = moment(attainedDate).format("MMMM Do YYYY, h:mm:ss a");

@@ -4,8 +4,9 @@ import { useAppDispatch } from '../../hooks/store';
 import { getTransactions } from '../../reducers/transactions/transactions.action';
 import { selectTransactions } from '../../reducers/transactions/transactions.selectors';
 import { Transaction } from '../../interfaces/Transaction.interface';
-import { formatToCurrency, getTimeStamp } from '../../utils/content';
+import { formatToCurrency, formatVendorName, getTimeStamp } from '../../utils/content';
 import './TransactionsTable.css';
+import { Link } from 'react-router-dom';
 
 const TransactionsTable: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -17,15 +18,17 @@ const TransactionsTable: React.FC = () => {
 
   const renderTransactionsList = () => {
     return transactions.map((transaction: Transaction) => {
-      const formatVendorName = (name: string) => name.replace(/[-]+/g, ' ');
-
       return (
         <tr key={`${transaction.id}-row`}>
           <td className="table-cell">{transaction.type}</td>
           <td className="table-cell">{getTimeStamp(transaction.date)}</td>
           <td className="table-cell product-name">{transaction.product}</td>
           <td className="table-cell">{`${formatToCurrency(transaction.value)}`}</td>
-          <td className="table-cell vendor-name">{formatVendorName(transaction.vendor)}</td>
+          <td className="table-cell vendor-name">
+            <Link to={`/balance/${transaction.vendor}`}>
+              {formatVendorName(transaction.vendor)}
+            </Link>
+          </td>
         </tr>
       );
     });

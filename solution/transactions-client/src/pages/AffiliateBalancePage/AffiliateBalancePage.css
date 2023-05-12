@@ -1,0 +1,25 @@
+.affiliate-balance-page-wrapper {
+  padding: 20px;
+  position: relative;
+  text-align: center;
+}
+
+.affiliate-balance-title {
+  text-transform: capitalize;
+}
+
+.affiliate-balance-subtitle-wrapper {
+  background-color: rgb(73, 71, 71);
+  color: white;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.affiliate-balance-value-wrapper {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.text {
+  font-size: 24px;
+}
