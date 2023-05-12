@@ -3,23 +3,21 @@ import Transaction from '../models/transaction.model';
 
 const getBalance = (req: Request, res: Response, next: NextFunction) => {
   let balance = {
-    saleVendor: 0,
-    saleAffiliate: 0,
-    comissionPaid: 0,
-    comissionReceived: 0,
+    totalProducer: 0,
+    totalAffiliate: 0,
+    comissionToPay: 0,
   }
 
   Transaction.findAll()
     .then((transactions) => {
       transactions.forEach((transaction: any) => {
         if (transaction.type === 1) {
-          balance.saleVendor += transaction.value
+          balance.totalProducer += transaction.value;
         } else if (transaction.type === 2) {
-          balance.saleAffiliate += transaction.value
+          balance.totalAffiliate += transaction.value;
         } else if (transaction.type === 3) {
-          balance.comissionPaid += transaction.value
-        } else if (transaction.type === 4) {
-          balance.comissionReceived += transaction.value
+          balance.totalProducer -= transaction.value;
+          balance.comissionToPay += transaction.value;
         }
       })
 

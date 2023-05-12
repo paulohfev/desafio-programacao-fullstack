@@ -1,7 +1,11 @@
+.table-wrapper {
+  margin: 40px auto 0;
+}
+
 .table {
   border-collapse: collapse;
   height: 500px;
-  margin: 40px auto 0;
+  margin: 0 auto;
   overflow: auto;
 }
 

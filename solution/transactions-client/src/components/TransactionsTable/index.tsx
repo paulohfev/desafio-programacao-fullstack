@@ -35,18 +35,21 @@ const TransactionsTable: React.FC = () => {
   };
 
   return (
-    <table className="table">
-      <thead>
-        <tr>
-          <th className="table-header">Type</th>
-          <th className="table-header">Date</th>
-          <th className="table-header">Product</th>
-          <th className="table-header">Value</th>
-          <th className="table-header">Vendor</th>
-        </tr>
-      </thead>
-      <tbody>{renderTransactionsList()}</tbody>
-    </table>
+    <div className="table-wrapper">
+      <h2>Transactions</h2>
+      <table className="table">
+        <thead>
+          <tr>
+            <th className="table-header">Type</th>
+            <th className="table-header">Date</th>
+            <th className="table-header">Product</th>
+            <th className="table-header">Value</th>
+            <th className="table-header">Vendor</th>
+          </tr>
+        </thead>
+        <tbody>{renderTransactionsList()}</tbody>
+      </table>
+    </div>
   );
 };
 

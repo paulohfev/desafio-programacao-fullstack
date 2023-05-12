@@ -16,10 +16,9 @@ const BalanceTable: React.FC = () => {
 
   const renderTableHeader = () => {
     const tableHeaders = [
-      'Sales from vendors',
-      'Sales from affiliates',
+      "Total Producer's Balance",
+      "Total earned from Affiliates",
       'Commission to be paid',
-      'Comission to be received',
     ];
 
     return tableHeaders.map(header => (
@@ -34,10 +33,9 @@ const BalanceTable: React.FC = () => {
       </thead>
       <tbody>
         <tr>
-          <td className="balance-table-cell">{formatToCurrency(balance.saleVendor)}</td>
-          <td className="balance-table-cell">{formatToCurrency(balance.saleAffiliate)}</td>
-          <td className="balance-table-cell">{formatToCurrency(balance.comissionPaid)}</td>
-          <td className="balance-table-cell">{formatToCurrency(balance.comissionReceived)}</td>
+          <td className="balance-table-cell">{formatToCurrency(balance.totalProducer)}</td>
+          <td className="balance-table-cell">{formatToCurrency(balance.totalAffiliate)}</td>
+          <td className="balance-table-cell">{formatToCurrency(balance.comissionToPay)}</td>
         </tr>
       </tbody>
     </table>
