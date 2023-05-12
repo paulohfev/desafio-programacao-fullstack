@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useAppDispatch } from '../../hooks/store';
-import { getTransactions, sendTransactionsFile } from '../../reducers/transactions/transactions.action';
+import { getTransactions, sendTransactionsFile } from '../../store/transactions/transactions.action';
 import { getBalance } from '../../store/balance/balance.action';
 import './Form.css';
 import { GenericResponse } from '../../interfaces/genericResponse.interface';

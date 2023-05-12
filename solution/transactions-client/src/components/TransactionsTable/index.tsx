@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../hooks/store';
-import { getTransactions } from '../../reducers/transactions/transactions.action';
-import { selectTransactions } from '../../reducers/transactions/transactions.selectors';
+import { getTransactions } from '../../store/transactions/transactions.action';
+import { selectTransactions } from '../../store/transactions/transactions.selectors';
 import { Transaction } from '../../interfaces/Transaction.interface';
 import { formatToCurrency, formatVendorName, getTimeStamp } from '../../utils/content';
 import './TransactionsTable.css';
