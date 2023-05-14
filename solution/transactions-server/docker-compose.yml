@@ -1,16 +1,32 @@
 version: '3'
 
 services:
+  mysqldb:
+    image: mysql:8.0.33
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
+
   app:
     container_name: transactions-client-server
     image: transactions-client-server
+    tty: true
+    stdin_open: true
     build:
       context: .
       target: development
-      args:
-       - DB_PASSWORD=${DB_PASSWORD}
     volumes:
       - .:/app/
-    stdin_open: true
+    env_file:
+      - .env
     ports:
       - 4000:4000
+    depends_on:
+      - mysqldb
+
+volumes:
+  db:
