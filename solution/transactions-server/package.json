@@ -5,8 +5,8 @@
   "main": "app.ts",
   "scripts": {
     "test": "jest --verbose",
-    "start": "nodemon app.ts",
-    "dev": "docker-compose -f docker-compose.yml up"
+    "dev": "nodemon app.ts",
+    "docker:start:dev": "docker-compose -f docker-compose.yml up"
   },
   "keywords": [],
   "author": "",
