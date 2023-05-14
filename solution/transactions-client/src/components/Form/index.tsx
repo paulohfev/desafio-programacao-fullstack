@@ -40,11 +40,12 @@ const Form: React.FC<Props> = ({ setShowToast, setToastMessage }) => {
   }
 
   return (
-    <form className="form" onSubmit={onSubmit}>
+    <form className="form" onSubmit={onSubmit} data-testid="form">
       <legend className="form-legend">Upload your file</legend>
       <fieldset className="fieldset">
         <input
           className="input-file"
+          data-testid="inputFile"
           id="transactions"
           name="transactions"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleOnChange(e)}
@@ -54,7 +55,7 @@ const Form: React.FC<Props> = ({ setShowToast, setToastMessage }) => {
         <label htmlFor="transactions">Select a file</label>
       </fieldset>
 
-      <button className="button" type="submit">Save</button>
+      <button className="button" disabled={!attachedFile} type="submit">Save</button>
 
       {attachedFile && renderAttachedFilePreview()}
     </form>
