@@ -22,7 +22,7 @@ const Form: React.FC<Props> = ({ setShowToast, setToastMessage }) => {
   };
 
   const renderAttachedFilePreview = () => {
-    return <div className="attached-file">{attachedFile?.name}</div>;
+    return <div className="attached-file" data-testid="attachedFilePreview">{attachedFile?.name}</div>;
   };
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -41,9 +41,11 @@ const Form: React.FC<Props> = ({ setShowToast, setToastMessage }) => {
 
   return (
     <form className="form" onSubmit={onSubmit} data-testid="form">
-      <legend className="form-legend">Upload your file</legend>
+      <h2>Upload your file</h2>
+      <legend className="form-legend">We are currently only supporting files with a .txt extension.</legend>
       <fieldset className="fieldset">
         <input
+          accept="text/plain"
           className="input-file"
           data-testid="inputFile"
           id="transactions"

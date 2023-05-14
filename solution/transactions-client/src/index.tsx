@@ -1,21 +1,11 @@
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import AffiliateBalancePage from './pages/AffiliateBalancePage';
-import HomePage from './pages/HomePage';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { routesConfig } from './router';
 import store from './store';
 import './index.css';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <HomePage />,
-  },
-  {
-    path: "/balance/:affiliateName",
-    element: <AffiliateBalancePage />,
-  }
-]);
+const router = createBrowserRouter(routesConfig);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

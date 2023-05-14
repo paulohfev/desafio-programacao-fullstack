@@ -24,7 +24,7 @@ const TransactionsTable: React.FC = () => {
           <td className="table-cell">{getTimeStamp(transaction.date)}</td>
           <td className="table-cell product-name">{transaction.product}</td>
           <td className="table-cell">{`${formatToCurrency(transaction.value)}`}</td>
-          <td className="table-cell vendor-name">
+          <td className="table-cell vendor-name-link">
             <Link to={`/balance/${transaction.vendor}`}>
               {formatVendorName(transaction.vendor)}
             </Link>
@@ -35,7 +35,7 @@ const TransactionsTable: React.FC = () => {
   };
 
   return (
-    <div className="table-wrapper">
+    <div className="table-wrapper" data-testid="transactionsTable">
       <h2>Transactions</h2>
       <table className="table">
         <thead>

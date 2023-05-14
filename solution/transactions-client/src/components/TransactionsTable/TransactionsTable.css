@@ -14,7 +14,7 @@
   padding: 8px;
 }
 
-.table-cell.vendor-name,
+.table-cell.vendor-name-link,
 .table-cell.product-name {
   text-transform: capitalize;
 }

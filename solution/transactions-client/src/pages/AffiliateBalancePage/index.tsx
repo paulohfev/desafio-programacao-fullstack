@@ -21,8 +21,9 @@ const AffiliateBalancePage: React.FC = () => {
   }, [affiliateName]);
 
   return (
-    <div className="affiliate-balance-page-wrapper">
-      <h1 className="affiliate-balance-title">{formatVendorName(affiliateName || '')}</h1>
+    <div className="affiliate-balance-page-wrapper" data-testid="affiliateBalancePage">
+      <h1>Affiliate Balance</h1>
+      <h2 className="affiliate-balance-title">{formatVendorName(affiliateName || '')}</h2>
 
       <div>
         <div className="affiliate-balance-subtitle-wrapper">

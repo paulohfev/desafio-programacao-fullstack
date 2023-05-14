@@ -27,7 +27,7 @@ const BalanceTable: React.FC = () => {
   }
 
   return (
-    <table className="balance-table">
+    <table className="balance-table" data-testid="balanceTable">
       <thead>
         <tr>{renderTableHeader()}</tr>
       </thead>
