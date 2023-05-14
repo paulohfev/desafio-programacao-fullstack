@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Transaction } from '../interfaces/transaction.interface';
 
 const url = 'http://localhost:4000';
 const baseAPIUrl = `${url}/api`;
