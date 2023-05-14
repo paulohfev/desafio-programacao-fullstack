@@ -30,4 +30,3 @@ const Transaction = sequelize.define('transaction', {
 });
 
 export default Transaction;
-
