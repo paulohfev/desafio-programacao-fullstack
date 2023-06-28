@@ -1,4 +1,4 @@
-# Getting Started with the FullStack Solution Application
+# Getting Started
 
 This project uses React.js + Redux Toolkit for the client (frontend) and Express.js for the server (backend).
 The relational database used was MySQL, with sequelize used in the backend to make the connection.
